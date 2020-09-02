@@ -16,6 +16,7 @@ class MainViewController: public ViewController {
         void zeroPercentClicked();
         void fiftyPercentClicked();
         void oneHundredPercentClicked();
+        void newOptSelected();
 
     protected:
         void connectSignals() override;
@@ -29,6 +30,7 @@ class MainViewController: public ViewController {
         Gtk::Button *zeroProgress = nullptr;
         Gtk::Button *halfProgress = nullptr;
         Gtk::Button *fullProgress = nullptr;
+        Gtk::ComboBoxText *optSelector = nullptr;
 };
 
 #endif
