@@ -28,6 +28,7 @@ std::string getExecPath() {
 int main(int argc, char *argv[]) {
     std::string uiFileName = "main.glade";
     std::string uiFilePath = getExecPath();
+    Gtk::Main kit(argc, argv);
 
     MainViewController vc(uiFilePath + "/" + uiFileName);
 

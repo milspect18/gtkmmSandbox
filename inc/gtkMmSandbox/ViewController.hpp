@@ -26,7 +26,6 @@ class ViewController {
         }
 
     private:
-        Gtk::Main kit;
         Gtk::Window *root;
 
     protected:
