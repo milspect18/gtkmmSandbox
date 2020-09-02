@@ -24,6 +24,24 @@ void MainViewController::increaseBtnClicked() {
 }
 
 
+void MainViewController::zeroPercentClicked() {
+    this->progress->set_value(0.0);
+    this->menuPopover->hide();
+}
+
+
+void MainViewController::fiftyPercentClicked() {
+    this->progress->set_value(this->progress->get_max_value() / 2.0);
+    this->menuPopover->hide();
+}
+
+
+void MainViewController::oneHundredPercentClicked() {
+    this->progress->set_value(this->progress->get_max_value());
+    this->menuPopover->hide();
+}
+
+
 void MainViewController::connectSignals() {
     this->decreaseBtn->signal_clicked().connect(
         sigc::mem_fun(*this, &MainViewController::decreaseBtnClicked)
@@ -32,6 +50,18 @@ void MainViewController::connectSignals() {
     this->increaseBtn->signal_clicked().connect(
         sigc::mem_fun(*this, &MainViewController::increaseBtnClicked)
     );
+
+    this->zeroProgress->signal_clicked().connect(
+        sigc::mem_fun(*this, &MainViewController::zeroPercentClicked)
+    );
+
+    this->halfProgress->signal_clicked().connect(
+        sigc::mem_fun(*this, &MainViewController::fiftyPercentClicked)
+    );
+
+    this->fullProgress->signal_clicked().connect(
+        sigc::mem_fun(*this, &MainViewController::oneHundredPercentClicked)
+    );
 }
 
 
@@ -39,5 +69,8 @@ void MainViewController::fetchWidgets() {
     this->builder->get_widget("decreaseBtn", this->decreaseBtn);
     this->builder->get_widget("increaseBtn", this->increaseBtn);
     this->builder->get_widget("progress", this->progress);
-    this->builder->get_widget("headerBar", this->hdrBar);
+    this->builder->get_widget("menuPopover", this->menuPopover);
+    this->builder->get_widget("zeroProgress", this->zeroProgress);
+    this->builder->get_widget("halfProgress", this->halfProgress);
+    this->builder->get_widget("fullProgress", this->fullProgress);
 }

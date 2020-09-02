@@ -13,16 +13,22 @@ class MainViewController: public ViewController {
 
         void decreaseBtnClicked();
         void increaseBtnClicked();
+        void zeroPercentClicked();
+        void fiftyPercentClicked();
+        void oneHundredPercentClicked();
 
     protected:
         void connectSignals() override;
         void fetchWidgets() override;
 
     private:
-        Gtk::HeaderBar *hdrBar;
-        Gtk::Button *decreaseBtn;
-        Gtk::Button *increaseBtn;
-        Gtk::LevelBar *progress;
+        Gtk::Button *decreaseBtn = nullptr;
+        Gtk::Button *increaseBtn = nullptr;
+        Gtk::LevelBar *progress = nullptr;
+        Gtk::Popover *menuPopover = nullptr;
+        Gtk::Button *zeroProgress = nullptr;
+        Gtk::Button *halfProgress = nullptr;
+        Gtk::Button *fullProgress = nullptr;
 };
 
 #endif

@@ -11,8 +11,12 @@
 class ViewController {
     public:
         ViewController(const std::string &uiFile, const std::string &rootWidget) {
-            this->builder = builder = Gtk::Builder::create_from_file(uiFile);
+            this->builder = Gtk::Builder::create_from_file(uiFile);
             this->builder->get_widget(rootWidget, this->root);
+
+            this->root->signal_key_release_event().connect(
+                sigc::mem_fun(*this, &ViewController::fullscreenBtnReleased)
+            );
         }
 
         virtual ~ViewController() {
@@ -25,7 +29,24 @@ class ViewController {
             return this->root;
         }
 
+        bool fullscreenBtnReleased(GdkEventKey *e) {
+            if (e->type == GDK_KEY_RELEASE && e->keyval == GDK_KEY_F11) {
+                if (this->isFullScreen) {
+                    this->root->unfullscreen();
+                    this->isFullScreen = false;
+                } else {
+                    this->root->fullscreen();
+                    this->isFullScreen = true;
+                }
+
+                return true;
+            }
+
+            return false;
+        }
+
     private:
+        bool isFullScreen = false;
         Gtk::Window *root;
 
     protected:
