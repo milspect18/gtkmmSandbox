@@ -12,6 +12,7 @@ MainViewController::MainViewController(const std::string &uiFile)
     this->builder->get_widget("decreaseBtn", this->decreaseBtn);
     this->builder->get_widget("increaseBtn", this->increaseBtn);
     this->builder->get_widget("progress", this->progress);
+    this->builder->get_widget("headerBar", this->hdrBar);
 
     this->connectSignals();
 }

@@ -15,6 +15,7 @@ class MainViewController: public ViewController {
         void increaseBtnClicked();
 
     private:
+        Gtk::HeaderBar *hdrBar;
         Gtk::Button *decreaseBtn;
         Gtk::Button *increaseBtn;
         Gtk::LevelBar *progress;
