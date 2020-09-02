@@ -30,6 +30,9 @@ class ViewController {
 
     protected:
         Glib::RefPtr<Gtk::Builder> builder;
+
+        virtual void connectSignals() = 0;
+        virtual void fetchWidgets() = 0;
 };
 
 #endif

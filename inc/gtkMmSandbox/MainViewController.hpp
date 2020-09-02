@@ -14,13 +14,15 @@ class MainViewController: public ViewController {
         void decreaseBtnClicked();
         void increaseBtnClicked();
 
+    protected:
+        void connectSignals() override;
+        void fetchWidgets() override;
+
     private:
         Gtk::HeaderBar *hdrBar;
         Gtk::Button *decreaseBtn;
         Gtk::Button *increaseBtn;
         Gtk::LevelBar *progress;
-
-        void connectSignals();
 };
 
 #endif

@@ -9,11 +9,7 @@
 MainViewController::MainViewController(const std::string &uiFile)
     : ViewController(uiFile, "MainWindow")
 {
-    this->builder->get_widget("decreaseBtn", this->decreaseBtn);
-    this->builder->get_widget("increaseBtn", this->increaseBtn);
-    this->builder->get_widget("progress", this->progress);
-    this->builder->get_widget("headerBar", this->hdrBar);
-
+    this->fetchWidgets();
     this->connectSignals();
 }
 
@@ -36,4 +32,12 @@ void MainViewController::connectSignals() {
     this->increaseBtn->signal_clicked().connect(
         sigc::mem_fun(*this, &MainViewController::increaseBtnClicked)
     );
+}
+
+
+void MainViewController::fetchWidgets() {
+    this->builder->get_widget("decreaseBtn", this->decreaseBtn);
+    this->builder->get_widget("increaseBtn", this->increaseBtn);
+    this->builder->get_widget("progress", this->progress);
+    this->builder->get_widget("headerBar", this->hdrBar);
 }
